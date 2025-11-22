@@ -1,4 +1,3 @@
-import requests
 import os
 from urllib.parse import urlsplit, unquote
 
