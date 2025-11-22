@@ -9,9 +9,9 @@ def fetch_spacex_last_launch(directory, spacex_id):
 
     response_spacex = requests.get(url_space_x)
     response_spacex.raise_for_status()
-    urls_of_spacex_images = response_spacex.json()["links"]["flickr"]["original"]
+    spacex_image_urls = response_spacex.json()["links"]["flickr"]["original"]
 
-    for url_number, url in enumerate(urls_of_spacex_images):
+    for url_number, url in enumerate(spacex_image_urls):
         file_extension = get_file_extension(url)
         filename = f'spacex_{url_number}{file_extension}'
         filepath_to_spacex = os.path.join(directory, filename)
