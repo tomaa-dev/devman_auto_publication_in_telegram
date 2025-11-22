@@ -22,20 +22,21 @@ if __name__ == "__main__":
     directory = os.path.join(os.path.dirname(__file__), 'images')
 
     load_dotenv()
-    tg_space_token = os.environ["TELEGRAM_SPACE_TOKEN"]
-    tg_chat_id = os.environ["TELEGRAM_ID"]
+    tg_space_token = os.getenv("TELEGRAM_SPACE_TOKEN")
+    tg_chat_id = os.getenv("TELEGRAM_ID")
 
     parser = argparse.ArgumentParser(description="""Публикует указанную фотографию в канал. 
                                     Если “какую” не указано, публикует случайную фотографию.""")
     parser.add_argument('--photo', type=str)
+    parser.add_argument('--directory', type=str, default=directory)
     args = parser.parse_args()
 
-    images = take_files(directory)
+    images = take_files(args.directory)
 
     if args.photo:
         if args.photo in images:
-            publish_for_telegram(directory, args.photo, tg_space_token, tg_chat_id)
+            publish_for_telegram(args.directory, args.photo, tg_space_token, tg_chat_id)
     else:
         random.shuffle(images)
         random_photo = images[0]
-        publish_for_telegram(directory, random_photo, tg_space_token, tg_chat_id)
+        publish_for_telegram(args.directory, random_photo, tg_space_token, tg_chat_id)
