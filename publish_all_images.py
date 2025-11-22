@@ -3,12 +3,12 @@ import telegram
 import random
 import time
 from dotenv import load_dotenv 
-from publish_the_image import publish_for_telegram, takeFiles
+from publish_the_image import publish_for_telegram, take_files
 
 
 def publish_all_images(directory, interval, tg_space_token, tg_chat_id):
     while True:
-        images = takeFiles(directory)
+        images = take_files(directory)
         random.shuffle(images)
         for image in images:
             publish_for_telegram(directory, image, tg_space_token, tg_chat_id)

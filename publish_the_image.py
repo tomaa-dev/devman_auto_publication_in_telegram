@@ -10,7 +10,7 @@ def publish_for_telegram(directory, photo, tg_space_token, tg_chat_id):
     bot.send_document(chat_id=tg_chat_id, document=open(f'{directory}/{photo}', 'rb'))
 
 
-def takeFiles(directory):
+def take_files(directory):
     lst_of_images = []
     filesindir = os.listdir(directory)
     for filename in filesindir:
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     parser.add_argument('--photo', type=str)
     args = parser.parse_args()
 
-    images = takeFiles(directory)
+    images = take_files(directory)
 
     if args.photo:
         if args.photo in images:
