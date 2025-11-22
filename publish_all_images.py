@@ -22,6 +22,6 @@ if __name__ == "__main__":
     tg_space_token = os.environ["TELEGRAM_SPACE_TOKEN"]
     tg_chat_id = os.environ["TELEGRAM_ID"]
 
-    interval = 14400
+    interval = int(os.environ.get("PUBLISH_INTERVAL", 14400))
 
     publish_all_images(directory, interval, tg_space_token, tg_chat_id)
