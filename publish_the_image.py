@@ -7,7 +7,9 @@ import argparse
 
 def publish_for_telegram(directory, photo, tg_space_token, tg_chat_id):
     bot = telegram.Bot(token=tg_space_token)
-    with open(f'{directory}/{photo}', 'rb') as document:
+    filepath = os.path.join(directory, photo)
+    print(filepath)
+    with open(filepath, 'rb') as document:
         bot.send_document(chat_id=tg_chat_id, document=document)
 
 
