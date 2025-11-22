@@ -4,11 +4,8 @@ import argparse
 from image_downloader import create_directory, download_the_image, get_file_extension
 
 
-def fetch_spacex_last_launch(directory, spacex_id=None):
-    if spacex_id is None:
-        url_space_x = 'https://api.spacexdata.com/v5/launches/latest'
-    else:
-        url_space_x = f'https://api.spacexdata.com/v5/launches/{spacex_id}'
+def fetch_spacex_last_launch(directory, spacex_id):
+    url_space_x = f'https://api.spacexdata.com/v5/launches/{spacex_id}'
 
     response_spacex = requests.get(url_space_x)
     response_spacex.raise_for_status()
@@ -26,7 +23,7 @@ def fetch_spacex_last_launch(directory, spacex_id=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Скачивает фото запуска SpaceX")
-    parser.add_argument('--id', type=str, help='SpaceX launch ID')
+    parser.add_argument('--id', type=str, default='latest', help='SpaceX launch ID')
     args = parser.parse_args()
 
     directory = os.path.join(os.path.dirname(__file__), 'images')
