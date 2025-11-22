@@ -13,10 +13,8 @@ def publish_for_telegram(directory, photo, tg_space_token, tg_chat_id):
 
 
 def take_files(directory):
-    lst_of_images = []
     filesindir = os.listdir(directory)
-    for filename in filesindir:
-        lst_of_images.append(filename)
+    lst_of_images = [filename for filename in filesindir]
     return lst_of_images
 
 
