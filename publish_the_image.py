@@ -37,6 +37,5 @@ if __name__ == "__main__":
         if args.photo in images:
             publish_for_telegram(args.directory, args.photo, tg_space_token, tg_chat_id)
     else:
-        random.shuffle(images)
-        random_photo = images[0]
+        random_photo = random.choice(images)
         publish_for_telegram(args.directory, random_photo, tg_space_token, tg_chat_id)
