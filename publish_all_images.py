@@ -2,6 +2,7 @@ import os
 import telegram
 import random
 import time
+import argparse
 from dotenv import load_dotenv 
 from publish_the_image import publish_for_telegram, take_files
 from telegram.error import NetworkError, TelegramError
@@ -28,6 +29,10 @@ if __name__ == "__main__":
     tg_space_token = os.environ["TELEGRAM_SPACE_TOKEN"]
     tg_chat_id = os.environ["TELEGRAM_ID"]
 
+    parser = argparse.ArgumentParser(description="""Указать собственную директорию""")
+    parser.add_argument('--directory', type=str, default=directory)
+    args = parser.parse_args()
+
     interval = int(os.environ.get("PUBLISH_INTERVAL", 14400))
 
-    publish_all_images(directory, interval, tg_space_token, tg_chat_id)
+    publish_all_images(args.directory, interval, tg_space_token, tg_chat_id)
