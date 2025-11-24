@@ -5,9 +5,9 @@ from image_downloader import create_directory, download_the_image, get_file_exte
 
 
 def fetch_spacex_last_launch(directory, spacex_id):
-    url_space_x = f'https://api.spacexdata.com/v5/launches/{spacex_id}'
+    space_x_url = f'https://api.spacexdata.com/v5/launches/{spacex_id}'
 
-    response_spacex = requests.get(url_space_x)
+    response_spacex = requests.get(space_x_url)
     response_spacex.raise_for_status()
     spacex_image_urls = response_spacex.json()["links"]["flickr"]["original"]
 
