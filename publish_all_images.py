@@ -18,7 +18,7 @@ def publish_all_images(directory, interval, tg_space_token, tg_chat_id):
                 time.sleep(interval)
 
             except (NetworkError, TelegramError) as e:
-                time.sleep(interval)
+                time.sleep(1)
                 continue
 
 
